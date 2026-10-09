@@ -1,0 +1,3 @@
+"""
+EnergyPilot analytics package.
+"""

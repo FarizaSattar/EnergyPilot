@@ -1,0 +1,389 @@
+/* ============================================================================
+   EnergyPilot — PricingCard Styles
+   ========================================================================== */
+
+/* ----------------------------------------------------------------------------
+   Base Card Container
+   -------------------------------------------------------------------------- */
+.pricing-card {
+  --ep-green-900: #064e3b;
+  --ep-green-800: #065f46;
+  --ep-green-700: #047857;
+  --ep-green-600: #059669;
+  --ep-lime: #b7e44c;
+  --ep-border: #e2e8f0;
+  --ep-text: #0f172a;
+  --ep-text-muted: #64748b;
+
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  padding: 1.35rem 1.4rem 1.15rem;
+
+  border: 1px solid var(--ep-border);
+  border-radius: 16px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(250, 250, 250, 0.85) 100%
+  );
+
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05);
+
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+.pricing-card:hover {
+  border-color: rgba(5, 150, 105, 0.28);
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.06);
+  transform: translateY(-2px);
+}
+
+.pricing-card__accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3.5px;
+  background: linear-gradient(
+    90deg,
+    var(--ep-green-600) 0%,
+    var(--ep-green-700) 100%
+  );
+  opacity: 0.95;
+}
+
+/* ----------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.pricing-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pricing-card__heading {
+  min-width: 0;
+}
+
+.pricing-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.35rem;
+
+  color: var(--ep-green-700);
+
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.pricing-card__eyebrow-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background-color: var(--ep-green-600);
+}
+
+.pricing-card__title {
+  margin: 0;
+
+  color: var(--ep-text);
+
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.pricing-card__icon {
+  display: grid;
+  width: 2.45rem;
+  height: 2.45rem;
+  flex: 0 0 auto;
+  place-items: center;
+
+  border: 1px solid rgba(5, 150, 105, 0.18);
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #ecfdf5 0%,
+    rgba(209, 250, 229, 0.4) 100%
+  );
+
+  color: var(--ep-green-700);
+}
+
+/* ----------------------------------------------------------------------------
+   Rate Section
+   -------------------------------------------------------------------------- */
+.pricing-card__rate-section {
+  margin-top: 1.25rem;
+}
+
+.pricing-card__rate-caption {
+  margin: 0 0 0.3rem;
+
+  color: var(--ep-text-muted);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.pricing-card__rate-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pricing-card__rate {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.pricing-card__rate-value {
+  color: var(--ep-text);
+
+  font-size: clamp(2.25rem, 4vw, 2.85rem);
+  font-weight: 800;
+  font-feature-settings: "tnum" on, "lnum" on;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+
+.pricing-card__rate-unit {
+  color: var(--ep-text-muted);
+
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.pricing-card__description {
+  margin: 0.5rem 0 0;
+
+  color: var(--ep-text-muted);
+
+  font-size: 0.73rem;
+  line-height: 1.4;
+}
+
+/* ----------------------------------------------------------------------------
+   Trends
+   -------------------------------------------------------------------------- */
+.pricing-card__trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  padding: 0.3rem 0.6rem;
+
+  border-radius: 999px;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.pricing-card__trend--low {
+  border: 1px solid #a7f3d0;
+  background-color: #ecfdf5;
+  color: #065f46;
+}
+
+.pricing-card__trend--high {
+  border: 1px solid #ffedd5;
+  background-color: #fff7ed;
+  color: #9a3412;
+}
+
+/* ----------------------------------------------------------------------------
+   Details (Period & Timestamp)
+   -------------------------------------------------------------------------- */
+.pricing-card__details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-top: 1.25rem;
+  padding: 0.85rem 0;
+
+  border-top: 1px solid var(--ep-border);
+  border-bottom: 1px solid var(--ep-border);
+}
+
+.pricing-card__detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pricing-card__detail-label {
+  color: var(--ep-text-muted);
+
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pricing-card__period {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  padding: 0.3rem 0.65rem;
+
+  border: 1px solid var(--ep-border);
+  border-radius: 999px;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.pricing-card__period-dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.pricing-card__period--off-peak {
+  border-color: #a7f3d0;
+  background-color: #ecfdf5;
+  color: #065f46;
+}
+
+.pricing-card__period--mid-peak {
+  border-color: #fef9c3;
+  background-color: #fefce8;
+  color: #854d0e;
+}
+
+.pricing-card__period--on-peak {
+  border-color: #ffedd5;
+  background-color: #fff7ed;
+  color: #9a3412;
+}
+
+.pricing-card__period--ultra-low {
+  border-color: #bfdbfe;
+  background-color: #eff6ff;
+  color: #1e40af;
+}
+
+.pricing-card__updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  color: var(--ep-text);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.pricing-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-top: 0.85rem;
+
+  color: var(--ep-text-muted);
+
+  font-size: 0.68rem;
+}
+
+.pricing-card__footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  color: var(--ep-green-700);
+
+  font-weight: 700;
+}
+
+.pricing-card__footer-separator {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--ep-text-muted);
+  opacity: 0.5;
+}
+
+/* ----------------------------------------------------------------------------
+   Empty State
+   -------------------------------------------------------------------------- */
+.pricing-card--empty {
+  opacity: 0.85;
+}
+
+.pricing-card__empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 1.5rem 1rem;
+
+  text-align: center;
+}
+
+.pricing-card__empty-symbol {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+
+  margin-bottom: 0.75rem;
+
+  border-radius: 50%;
+
+  background-color: #f1f5f9;
+  color: var(--ep-text-muted);
+}
+
+.pricing-card__empty-message {
+  margin: 0 0 0.25rem;
+
+  color: var(--ep-text);
+
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.pricing-card__empty-hint {
+  color: var(--ep-text-muted);
+
+  font-size: 0.73rem;
+}
+
+/* ----------------------------------------------------------------------------
+   Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .pricing-card {
+    transition: none;
+  }
+
+  .pricing-card:hover {
+    transform: none;
+  }
+}

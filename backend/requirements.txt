@@ -1,0 +1,6 @@
+Flask
+Flask-Cors
+psycopg[binary]
+psycopg-pool
+paho-mqtt
+python-dotenv

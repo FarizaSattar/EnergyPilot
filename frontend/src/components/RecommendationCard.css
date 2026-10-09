@@ -1,0 +1,456 @@
+/* ============================================================================
+   EnergyPilot — RecommendationCard
+   ========================================================================== */
+
+/* ----------------------------------------------------------------------------
+   Card Base Structure
+   -------------------------------------------------------------------------- */
+.recommendation-card {
+  --ep-green-900: #064e3b;
+  --ep-green-800: #065f46;
+  --ep-green-700: #047857;
+  --ep-green-600: #059669;
+  --ep-green-50:  #ecfdf5;
+  --ep-border:    #e2e8f0;
+  --ep-text:      #0f172a;
+  --ep-text-muted:#64748b;
+  --ep-white:     #ffffff;
+
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  border: 1px solid var(--ep-border);
+  border-radius: 16px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(250, 250, 250, 0.85) 100%
+  );
+
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.recommendation-card:hover {
+  border-color: rgba(5, 150, 105, 0.28);
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.06);
+  transform: translateY(-2px);
+}
+
+.recommendation-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3.5px;
+  background: var(--ep-green-600);
+}
+
+/* Priority Variant Borders */
+.recommendation-high .recommendation-accent {
+  background: linear-gradient(90deg, #ea580c 0%, #c2410c 100%);
+}
+.recommendation-medium .recommendation-accent {
+  background: linear-gradient(90deg, #ca8a04 0%, #a16207 100%);
+}
+.recommendation-low .recommendation-accent {
+  background: linear-gradient(90deg, #059669 0%, #047857 100%);
+}
+
+.recommendation-card-inner {
+  display: flex;
+  padding: 1.35rem 1.4rem;
+  gap: 1.1rem;
+}
+
+/* ----------------------------------------------------------------------------
+   Main Category Icon
+   -------------------------------------------------------------------------- */
+.recommendation-main-icon {
+  position: relative;
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+  place-items: center;
+
+  border: 1px solid rgba(5, 150, 105, 0.18);
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, var(--ep-green-50) 0%, rgba(209, 250, 229, 0.4) 100%);
+  color: var(--ep-green-700);
+}
+
+/* ----------------------------------------------------------------------------
+   Content Layout
+   -------------------------------------------------------------------------- */
+.recommendation-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.recommendation-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recommendation-eyebrow {
+  color: var(--ep-green-700);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.recommendation-category {
+  color: var(--ep-text-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.recommendation-priority {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.recommendation-priority-dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.recommendation-priority--high {
+  border: 1px solid #ffedd5;
+  background-color: #fff7ed;
+  color: #c2410c;
+}
+
+.recommendation-priority--medium {
+  border: 1px solid #fef9c3;
+  background-color: #fefce8;
+  color: #a16207;
+}
+
+.recommendation-priority--low {
+  border: 1px solid #a7f3d0;
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+.recommendation-title {
+  margin: 0.4rem 0 0.25rem;
+  color: var(--ep-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.recommendation-description {
+  margin: 0;
+  color: var(--ep-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+/* ----------------------------------------------------------------------------
+   Savings Opportunity Banner
+   -------------------------------------------------------------------------- */
+.recommendation-savings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+}
+
+.recommendation-savings-icon {
+  display: grid;
+  width: 2.2rem;
+  height: 2.2rem;
+  place-items: center;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: var(--ep-green-700);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+.recommendation-savings-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin-left: 0.75rem;
+}
+
+.recommendation-section-label {
+  color: var(--ep-green-800);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.recommendation-savings-primary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.recommendation-savings-primary strong {
+  color: var(--ep-green-900);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.recommendation-savings-primary span {
+  color: var(--ep-text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.recommendation-annual {
+  margin: 0.1rem 0 0;
+  color: var(--ep-text-muted);
+  font-size: 0.68rem;
+}
+
+.recommendation-savings-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background-color: var(--ep-green-700);
+  color: var(--ep-white);
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------------------------------
+   Metrics Grid
+   -------------------------------------------------------------------------- */
+.recommendation-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--ep-border);
+}
+
+.recommendation-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.recommendation-metric-label {
+  color: var(--ep-text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.recommendation-metric strong {
+  color: var(--ep-text);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------------------------------
+   Tags
+   -------------------------------------------------------------------------- */
+.recommendation-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+}
+
+.recommendation-tag {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--ep-border);
+  border-radius: 6px;
+  background-color: #f8fafc;
+  color: var(--ep-text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------------------
+   Expandable Details
+   -------------------------------------------------------------------------- */
+.recommendation-details {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--ep-border);
+  border-radius: 12px;
+  background-color: #f8fafc;
+}
+
+.recommendation-details[hidden] {
+  display: none;
+}
+
+.recommendation-details-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.recommendation-details-heading h4 {
+  margin: 0;
+  color: var(--ep-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.recommendation-details-heading p {
+  margin: 0;
+  color: var(--ep-text-muted);
+  font-size: 0.7rem;
+}
+
+.recommendation-detail-row {
+  display: flex;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.recommendation-detail-copy strong {
+  display: block;
+  color: var(--ep-text);
+  font-size: 0.75rem;
+}
+
+.recommendation-detail-copy p {
+  margin: 0.15rem 0 0;
+  color: var(--ep-text-muted);
+  font-size: 0.73rem;
+  line-height: 1.4;
+}
+
+/* Confidence Bar */
+.recommendation-confidence {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ep-border);
+}
+
+.confidence-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.confidence-header strong {
+  display: block;
+  color: var(--ep-text);
+  font-size: 0.75rem;
+}
+
+.confidence-header span {
+  color: var(--ep-text-muted);
+  font-size: 0.68rem;
+}
+
+.confidence-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background-color: #e2e8f0;
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  border-radius: 999px;
+  background-color: var(--ep-green-600);
+  transition: width 300ms ease;
+}
+
+.recommendation-model-note {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  color: var(--ep-green-700);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------------------
+   Footer / Actions
+   -------------------------------------------------------------------------- */
+.recommendation-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--ep-border);
+}
+
+.recommendation-bottom-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ep-text-muted);
+  font-size: 0.7rem;
+}
+
+.recommendation-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--ep-border);
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: var(--ep-text);
+  font-size: 0.73rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.recommendation-action:hover {
+  border-color: rgba(5, 150, 105, 0.3);
+  background-color: var(--ep-green-50);
+  color: var(--ep-green-800);
+}
+
+/* ----------------------------------------------------------------------------
+   Responsive Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .recommendation-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recommendation-card-inner {
+    flex-direction: column;
+  }
+}
